@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.24hourmoviemarathon.com/wp-content/uploads/2014/11/imdb_top_250.jpg);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path @list.photo.key, height: 300, crop: :fill %>);">
   <div class="container text-center">
     <h1><%= @list.name %></h1>
     <p></p>
@@ -14,27 +14,18 @@
 
   <div class="cards">
     <% @list.bookmarks.each do |bookmark| %>
-      <div class="card-trip">
-        <%= link_to "delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-          <img src="<%= bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %>"/>
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= bookmark.movie.title %></h2>
-              <p><%= bookmark.movie.overview %></p>
-            </div>
-          </div>
-          <div class="card-trip-infos">
-            <div>
-              <p>Rating: <%= bookmark.movie.rating %></p>
-            </div>
-          </div>
-          <div class="card-trip-infos">
-            <div>
-              <p><strong><i class="fa-solid fa-quote-right"></i> <%= bookmark.comment %></strong></p>
-            </div>
+    <div class="movie-container">
+      <div class="movie-poster d-flex justify-content-start align-items-end" style="background-image: url('<%= bookmark.movie.poster_url %>');">
+          <div class="p-2">
+            &#11088; <%= bookmark.movie.rating %>
           </div>
       </div>
+      <div class="movie-infos">
+        <h5><%= bookmark.movie.title %></h5>
+      </div>
+    </div>
     <% end %>
   </div>
+
 
 </div>
