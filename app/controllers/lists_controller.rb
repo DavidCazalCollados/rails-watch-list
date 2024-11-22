@@ -1,10 +1,6 @@
 class ListsController < ApplicationController
   def index
     @lists = List.all
-    @lists_with_first_movie = @lists.map do |list|
-      first_movie = list.bookmarks.first&.movie
-      { list: list, first_movie: first_movie }
-    end
   end
 
   def show

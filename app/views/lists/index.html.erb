@@ -16,10 +16,10 @@
   <div class="cards">
     <% @lists.each do |list| %>
       <%= link_to list_path(list), class:"text-decoration-none" do %>
-          <div class="card-category" href="" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('')">
+        <div class="card-category" href="" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
           <%= list.name %>
         </div>
-      <% end %>
+        <% end %>
     <% end %>
   </div>
 </div>
