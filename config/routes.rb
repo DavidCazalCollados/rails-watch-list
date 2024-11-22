@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   root to: "pages#home"
-  resources :lists, only: %i[index show create new] do
+  resources :lists, except: [:edit, :update] do
     resources :bookmarks, only: %i[new create index show]
   end
   resources :bookmarks, only: :destroy
