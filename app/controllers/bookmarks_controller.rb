@@ -1,5 +1,5 @@
 class BookmarksController < ApplicationController
-  before_action :set_list, only: [:new, :create, :destroy]
+  before_action :set_list, only: [:new, :create]
 
   def new
     @bookmark = Bookmark.new
@@ -17,18 +17,18 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    @bookmark = @list.bookmarks.fond(params[:id])
+    @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
-    redirect_to @list, status: :see_other
+    redirect_to list_path(@bookmark.list), status: :see_other
   end
 
   private
 
   def set_list
-    @list = List.find(params[:list_id])  # Associe la bonne liste
+    @list = List.find(params[:list_id])
   end
 
   def bookmark_params
-    params.require(:bookmark).permit(:comment, :movie_id)  # Assure que les bons params sont permis
+    params.require(:bookmark).permit(:comment, :movie_id)
   end
 end

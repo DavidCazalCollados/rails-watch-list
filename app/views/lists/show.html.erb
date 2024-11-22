@@ -15,6 +15,7 @@
   <div class="cards">
     <% @list.bookmarks.each do |bookmark| %>
       <div class="card-trip">
+        <%= link_to "delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
           <img src="<%= bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %>"/>
           <div class="card-trip-infos">
             <div>
