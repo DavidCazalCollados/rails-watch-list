@@ -1,0 +1,13 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.24hourmoviemarathon.com/wp-content/uploads/2014/11/imdb_top_250.jpg);">
+  <div class="container text-center">
+    <h1>Create your list</h1>
+    <p></p>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <%= simple_form_for(@list) do |f| %>
+    <%= f.input :name %>
+    <%= f.submit %>
+  <% end %>
+</div>

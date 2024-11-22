@@ -1,0 +1,25 @@
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.24hourmoviemarathon.com/wp-content/uploads/2014/11/imdb_top_250.jpg);">
+  <div class="container text-center">
+    <h1>Save any kind of movie</h1>
+    <p></p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="d-flex justify-content-between mt-5">
+    <h3>My lists</h3>
+    <%= link_to new_list_path, class:"text-decoration-none" do %>
+      <button type="button" class="btn btn-success">Create a new list</button>
+    <% end %>
+  </div>
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <%= link_to list_path(list), class:"text-decoration-none" do %>
+          <div class="card-category" href="" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('')">
+          <%= list.name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
