@@ -12,20 +12,26 @@
       <% end %>
   </div>
 
-  <div class="cards">
-    <% @list.bookmarks.each do |bookmark| %>
+<div class="card-total">
+<% @list.bookmarks.each do |bookmark| %>
+  <div class="card-movie">
+    <div class="square-white"></div>
     <div class="movie-container">
       <div class="movie-poster d-flex justify-content-start align-items-end" style="background-image: url('<%= bookmark.movie.poster_url %>');">
           <div class="p-2">
             &#11088; <%= bookmark.movie.rating %>
           </div>
       </div>
-      <div class="movie-infos">
-        <h5><%= bookmark.movie.title %></h5>
+      <div class="background-white-square"></div>
+      <div class="movie-title">
+        <h5><strong><%= bookmark.movie.title %></strong></h5>
+        <p><%= bookmark.movie.overview %></p>
+      </div>
+      <div class="comment">
+        <p><strong><i class="fa-solid fa-quote-right"></i> <%= bookmark.comment %></strong></p>
       </div>
     </div>
-    <% end %>
   </div>
-
-
+  <% end %>
+  </div>
 </div>
