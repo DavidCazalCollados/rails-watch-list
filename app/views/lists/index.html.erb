@@ -13,16 +13,20 @@
       <button type="button" class="btn btn-success">Create a new list</button>
     <% end %>
   </div>
+
   <div class="cards">
       <% @lists.each do |list| %>
-      <%= link_to list_path(list), class:"text-decoration-none" do %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
-          <%= list.name %>
-        </div>
-        <% end %>
-        <div class="mb-2 ">
-          <%= link_to "Delete list", list_path(list), class: "btn btn-cancel", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" } %>
-        </div>
-        <% end %>
+        <%# <div> %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+          url('<%= list.photo.present? && list.photo.key ? cl_image_path(list.photo.key, height: 300, crop: :fill) : 'https://technoparc.com/wp-content/uploads/2021/06/carre-gris.png' %>')">
+            <%= link_to list_path(list), class:"text-decoration-none text-white px-4 text-center" do %>
+            <%= list.name %>
+            <% end %>
+            <%= link_to list_path(list), class:"text-decoration-none delete-list", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" } do %>
+              &#x2715;
+            <% end %>
+          </div>
+        <%# </div> %>
+      <% end %>
   </div>
 </div>
